@@ -1,6 +1,6 @@
 %define name	coq
-%define version	8.0pl3
-%define release	%mkrel 6
+%define version	8.1pl1
+%define release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -9,10 +9,11 @@ Summary:	The Coq Proof Assistant
 Group:		Sciences/Computer science
 License:	LGPL
 URL:		http://coq.inria.fr
-Source:		ftp://ftp.inria.fr/INRIA/coq/V%{version}/%{name}-%{version}.tar.bz2
-Patch:		ftp://ftp.inria.fr/INRIA/coq/V8.0pl3/patch-coq-8.0pl3-ocaml-3.09.bz2
+Source:		ftp://ftp.inria.fr/INRIA/coq/V%{version}/%{name}-%{version}.tar.gz
+Patch0:		ftp://ftp.inria.fr/INRIA/coq/V%{version}/patch-coq-8.1pl1-ocaml-3.10-camlp5
+Patch1:		coq-8.1pl1.lablgtk2.patch
 BuildRequires:	ocaml >= 3.06
-BuildRequires:	camlp4
+BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
 BuildRequires:	ncurses-devel
 Buildroot:	%{_tmppath}/%{name}-%{version}
@@ -36,7 +37,8 @@ Coq proof assistant
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p0
+%patch1 -p1
 
 %build
 ./configure --mandir %{_mandir} \
@@ -44,9 +46,10 @@ Coq proof assistant
             --libdir %{_libdir}/coq \
             --emacslib %{_datadir}/emacs/site-lisp \
             --coqdocdir %{_datadir}/texmf/tex/latex/misc \
+            --lablgtkdir %{ocaml_sitelib}/lablgtk2 \
             --reals all \
             --opt
-%make world
+make world MYCAMLP4LIB="%{ocaml_sitelib}/camlp5"
 
 %clean
 rm -rf %{buildroot}
