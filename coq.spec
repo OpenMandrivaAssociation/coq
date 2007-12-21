@@ -16,6 +16,7 @@ BuildRequires:	ocaml >= 3.06
 BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
 BuildRequires:	ncurses-devel
+Buildroot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Coq is a proof assistant which: 
