@@ -1,6 +1,7 @@
 %define name	coq
-%define version	8.1pl3
-%define release	%mkrel 1
+%define version	8.2
+%define beta    rc2
+%define release	%mkrel 0.%{beta}.1
 
 Name:		%{name}
 Version:	%{version}
@@ -9,7 +10,7 @@ Summary:	The Coq Proof Assistant
 Group:		Sciences/Computer science
 License:	LGPL
 URL:		http://coq.inria.fr
-Source:		ftp://ftp.inria.fr/INRIA/coq/V%{version}/%{name}-%{version}.tar.gz
+Source:		ftp://ftp.inria.fr/INRIA/coq/V%{version}/%{name}-%{version}%{beta}.tar.gz
 BuildRequires:	ocaml >= 3.06
 BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
@@ -34,7 +35,7 @@ The Coq Integrated Development Interface is a graphical interface for the
 Coq proof assistant 
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{beta}
 
 %build
 ./configure --mandir %{_mandir} \
@@ -42,10 +43,10 @@ Coq proof assistant
             --libdir %{_libdir}/coq \
             --emacslib %{_datadir}/emacs/site-lisp \
             --coqdocdir %{_datadir}/texmf/tex/latex/misc \
-            --lablgtkdir %{ocaml_sitelib}/lablgtk2 \
+            --docdir %{_datadir}/doc/%{name} \
             --reals all \
             --opt
-make world MYCAMLP4LIB="%{ocaml_sitelib}/camlp5"
+make world
 
 %clean
 rm -rf %{buildroot}
