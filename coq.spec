@@ -1,6 +1,6 @@
 %define name	coq
 %define version	8.2
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Name:		%{name}
 Version:	%{version}
