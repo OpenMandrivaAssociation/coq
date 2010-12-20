@@ -1,5 +1,5 @@
 %define name	coq
-%define version	8.2pl1
+%define version	8.3
 %define release	%mkrel 3
 
 Name:		%{name}
@@ -9,7 +9,9 @@ Summary:	The Coq Proof Assistant
 Group:		Sciences/Computer science
 License:	LGPL
 URL:		http://coq.inria.fr
-Source:		ftp://ftp.inria.fr/INRIA/coq/V%{version}/%{name}-%{version}.tar.gz
+Source:		http://coq.inria.fr/distrib/V%{version}/files/%{name}-%{version}.tar.gz
+Patch0:     coq-8.3-make-3.82-compat.patch
+Patch1:     coq-8.3-camlp5-6-compat.patch
 BuildRequires:	ocaml >= 3.06
 BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
@@ -35,16 +37,17 @@ Coq proof assistant
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
-./configure --mandir %{_mandir} \
-            --bindir %{_bindir} \
-            --libdir %{_libdir}/coq \
-            --emacslib %{_datadir}/emacs/site-lisp \
-            --coqdocdir %{_datadir}/texmf/tex/latex/misc \
-            --docdir %{_datadir}/doc/%{name} \
-            --reals all \
-            --opt
+./configure -mandir %{_mandir} \
+            -bindir %{_bindir} \
+            -libdir %{_libdir}/coq \
+            -emacslib %{_datadir}/emacs/site-lisp \
+            -coqdocdir %{_datadir}/texmf/tex/latex/misc \
+            -docdir %{_datadir}/doc/%{name} \
+            -opt
 make world
 
 %clean
