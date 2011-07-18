@@ -1,6 +1,6 @@
 %define name	coq
-%define version	8.3
-%define release	%mkrel 3
+%define version	8.3pl2
+%define release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
@@ -10,8 +10,6 @@ Group:		Sciences/Computer science
 License:	LGPL
 URL:		http://coq.inria.fr
 Source:		http://coq.inria.fr/distrib/V%{version}/files/%{name}-%{version}.tar.gz
-Patch0:     coq-8.3-make-3.82-compat.patch
-Patch1:     coq-8.3-camlp5-6-compat.patch
 BuildRequires:	ocaml >= 3.06
 BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
@@ -37,8 +35,6 @@ Coq proof assistant
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 ./configure -mandir %{_mandir} \
