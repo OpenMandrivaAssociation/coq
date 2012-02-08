@@ -1,37 +1,33 @@
-%define name	coq
-%define version	8.3pl2
-%define release	%mkrel 1
-
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		coq
+Version:	8.3pl3
+Release:	%mkrel 1
 Summary:	The Coq Proof Assistant
 Group:		Sciences/Computer science
 License:	LGPL
 URL:		http://coq.inria.fr
 Source:		http://coq.inria.fr/distrib/V%{version}/files/%{name}-%{version}.tar.gz
-BuildRequires:	ocaml >= 3.06
+BuildRequires:	ocaml
 BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
 BuildRequires:	ncurses-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}
+BuildRequires:	hevea
 
 %description
-Coq is a proof assistant which: 
-  - allows to handle calculus assertions, 
-  - check mechanically proofs of these assertions, 
-  - helps to find formal proofs, 
+Coq is a proof assistant which:
+  - allows to handle calculus assertions,
+  - check mechanically proofs of these assertions,
+  - helps to find formal proofs,
   - extracts a certified program from the constructive proof
-    of its formal specification, 
+    of its formal specification.
 
-%package ide
+%package	ide
 Summary:	The Coq Integrated Development Interface
 Group:		Sciences/Computer science
 Requires:	%{name} = %{version}
 
-%description ide
-The Coq Integrated Development Interface is a graphical interface for the 
-Coq proof assistant 
+%description	ide
+The Coq Integrated Development Interface is a graphical interface for the
+Coq proof assistant.
 
 %prep
 %setup -q
@@ -43,14 +39,15 @@ Coq proof assistant
             -emacslib %{_datadir}/emacs/site-lisp \
             -coqdocdir %{_datadir}/texmf/tex/latex/misc \
             -docdir %{_datadir}/doc/%{name} \
+            -browser "xdg-open %s" \
             -opt
 make world
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %install
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 make COQINSTALLPREFIX=%{buildroot} install-coq
 make COQINSTALLPREFIX=%{buildroot} install-coqide
 export EXCLUDE_FROM_STRIP=%{_bindir}
