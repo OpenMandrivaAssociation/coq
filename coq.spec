@@ -11,6 +11,7 @@ BuildRequires:	camlp5
 BuildRequires:	ocaml-lablgtk2-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	hevea
+BuildRequires:	tetex-latex
 
 %description
 Coq is a proof assistant which:
