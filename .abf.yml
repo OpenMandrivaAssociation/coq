@@ -1,2 +1,5 @@
 sources:
-  "coq-8.3pl3.tar.gz:"	a5b0cbca8bf556fe7eb804ccdb39bba49e1ae014
+  "coq-8.3pl3.tar.gz": a5b0cbca8bf556fe7eb804ccdb39bba49e1ae014
+  Reference-Manual.pdf: d8410ae7c2db5546dceee9202519412ecc0caadb
+  Tutorial.pdf: 8330a1a4324676e137bb4b4989adfda5fd8a31de
+  coq-8.4.tar.gz: 2987aa418dd96a0df7284afe296293cb28814ef5
