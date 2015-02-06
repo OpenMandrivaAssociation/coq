@@ -1,7 +1,7 @@
 %define	debug_package	%nil
 Name:           coq
 Version:        8.4
-Release:        %mkrel 2
+Release:        3
 Summary:        The Coq Proof Assistant
 Group:          Sciences/Computer science
 License:        LGPLv2
