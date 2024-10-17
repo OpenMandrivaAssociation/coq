@@ -5,7 +5,7 @@ Release:        3
 Summary:        The Coq Proof Assistant
 Group:          Sciences/Computer science
 License:        LGPLv2
-URL:            http://coq.inria.fr
+URL:            https://coq.inria.fr
 Source0:        http://coq.inria.fr/distrib/V%{version}/files/%{name}-%{version}.tar.gz
 Source1:        http://coq.inria.fr/distrib/V8.4/files/Tutorial.pdf
 Source2:        http://coq.inria.fr/distrib/V8.4/files/Reference-Manual.pdf
