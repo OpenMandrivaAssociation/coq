@@ -11,6 +11,11 @@ Source1:        http://coq.inria.fr/distrib/V8.4/files/Tutorial.pdf
 Source2:        http://coq.inria.fr/distrib/V8.4/files/Reference-Manual.pdf
 # Patch0 for compatibility with lablgtk 2.16 (from Gentoo)
 Patch0:         coq-8.4-lablgtk-2.16-compat.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	ocaml
 BuildRequires:	camlp5
 BuildRequires:	camlp4
